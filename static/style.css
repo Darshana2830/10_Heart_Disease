@@ -1,0 +1,14 @@
+:root{--ink:#172b45;--muted:#66768e;--teal:#07877f;--line:#dce5ef;--bg:#f2f6fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+.container{width:min(1050px,94%);margin:34px auto}.hero{padding:8px 4px 22px}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:#526987}
+h1{font-size:clamp(30px,5vw,42px);margin:10px 0;color:#142d4a}.hero p{color:var(--muted);line-height:1.6}
+.panel{background:white;border-radius:16px;padding:28px;box-shadow:0 12px 34px rgba(30,50,80,.06);border:1px solid #edf1f6}
+section+section{margin-top:28px}h2{font-size:17px;color:var(--teal);padding-bottom:12px;border-bottom:1px solid var(--line);margin:0 0 20px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px}.field{display:flex;flex-direction:column;gap:8px;font-size:13px}
+.field input,.field select{width:100%;padding:11px 12px;border:1px solid #cfdae8;border-radius:8px;background:#fbfdff;color:var(--ink);font-size:14px;min-height:42px}
+.field input:focus,.field select:focus{outline:3px solid #d5f1ed;border-color:var(--teal)}
+.field small,.footnote,footer{font-size:11px;color:var(--muted);line-height:1.5}
+button,.button-link{display:block;width:100%;text-align:center;background:var(--teal);color:white;border:0;border-radius:9px;padding:14px 18px;margin-top:26px;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer}
+button:hover,.button-link:hover{background:#056e68}.footnote{text-align:center;margin:18px 0 0}.alert{padding:13px 16px;background:#fff0ee;border:1px solid #ffd2cc;border-radius:9px;color:#9d3028;margin-bottom:16px}
+footer{text-align:center;padding:22px}.result-container{max-width:760px}.result-panel{padding:34px}.result-positive,.result-negative{border:0;padding:0}.meter{height:12px;border-radius:20px;background:#e8edf4;overflow:hidden;margin:18px 0}.meter span{display:block;height:100%;background:var(--teal)}
+@media(max-width:650px){.container{margin:20px auto}.panel{padding:20px}.fields{grid-template-columns:1fr}}

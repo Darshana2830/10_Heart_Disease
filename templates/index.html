@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="eyebrow">MACHINE LEARNING PROJECT</span>
+      <h1>Heart Disease Prediction</h1>
+      <p>Enter the dataset features below to request a model-based prediction.</p>
+    </header>
+
+    {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+    <form method="POST" class="panel">
+      <section>
+        <h2>01 — Personal Information</h2>
+        <div class="fields">
+          {% for field in fields if field.key in ["age", "sex"] %}
+            <label class="field">
+              <span>{{ field.label }}</span>
+              {% if field.kind == "select" %}
+                <select name="{{ field.key }}" required>
+                  <option value="">Select code</option>
+                  {% for option in field.options %}
+                    <option value="{{ option }}" {% if values.get(field.key, "") == option|string %}selected{% endif %}>Code {{ option }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="number" name="{{ field.key }}" min="{{ field.min }}" max="{{ field.max }}" step="{{ field.step }}" value="{{ values.get(field.key, '') }}" required>
+              {% endif %}
+            </label>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section>
+        <h2>02 — Clinical Measurements</h2>
+        <div class="fields">
+          {% for field in fields if field.key not in ["age", "sex"] %}
+            <label class="field">
+              <span>{{ field.label }}</span>
+              {% if field.kind == "select" %}
+                <select name="{{ field.key }}" required>
+                  <option value="">Select code</option>
+                  {% for option in field.options %}
+                    <option value="{{ option }}" {% if values.get(field.key, "") == option|string %}selected{% endif %}>Code {{ option }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="number" name="{{ field.key }}" min="{{ field.min }}" max="{{ field.max }}" step="{{ field.step }}" value="{{ values.get(field.key, '') }}" required>
+              {% endif %}
+              {% if field.kind == "select" %}<small>Choose the numeric category used in the training dataset.</small>{% endif %}
+            </label>
+          {% endfor %}
+        </div>
+      </section>
+
+      <button type="submit">Predict Heart Disease</button>
+      <p class="footnote">For educational demonstration only. This prediction cannot diagnose, exclude, or replace assessment by a qualified healthcare professional.</p>
+    </form>
+    <footer>Heart Disease Prediction • Flask + AWS SageMaker</footer>
+  </main>
+</body>
+</html>

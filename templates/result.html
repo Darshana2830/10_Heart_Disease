@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container result-container">
+    <header class="hero">
+      <span class="eyebrow">MACHINE LEARNING PROJECT</span>
+      <h1>Heart Disease Prediction</h1>
+      <p>Prediction returned by your deployed AWS SageMaker model.</p>
+    </header>
+    <section class="panel result-panel">
+      {% if prediction == 1 %}
+        <h2 class="result-positive">Model predicted class 1</h2>
+      {% else %}
+        <h2 class="result-negative">Model predicted class 0</h2>
+      {% endif %}
+      <p>Predicted class: <strong>{{ prediction }}</strong></p>
+      <p>Estimated probability for class 1: <strong>{{ "%.2f"|format(probability) }}%</strong></p>
+      <div class="meter"><span style="width: {{ probability }}%"></span></div>
+      <a class="button-link" href="/">Make another prediction</a>
+      <p class="footnote">Academic model output only; not a medical diagnosis.</p>
+    </section>
+  </main>
+</body>
+</html>
